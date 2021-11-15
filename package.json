@@ -4,6 +4,7 @@
   "main": "index.js",
   "repository": "https://github.com/KPMGE/ChatCord.git",
   "author": "KPMGE <jesuskevin254@gmail.com>",
+  "type": "module",
   "license": "MIT",
   "scripts": {
     "start": "node src/server.js",

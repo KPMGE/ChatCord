@@ -1,14 +1,19 @@
-const express = require("express");
-const http = require("http");
-const path = require("path");
-const socketio = require("socket.io");
+import express from "express";
+import { Server } from "socket.io"; // replace require('socket.io')
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+import { createServer } from "http";
+
+// creating __filename and __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
-const server = http.createServer(app);
-const io = socketio(server);
+const server = createServer(app);
+const io = new Server(server);
 
 // set static folder
-app.use(express.static(path.join(__dirname, "../public")));
+app.use(express.static(join(__dirname, "../public")));
 
 // Run when a client connects
 io.on("connection", (socket) => {
